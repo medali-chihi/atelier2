@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Etudiant;
 
 class EtudiantController extends Controller
 {
     public function index(){
-        $nom='chihi';
-        $prenom='medali';
-        return view('etudiant',compact('nom','prenom'));
+       $liste = Etudiant::orderby('nom','asc')->get();
+        return view('etudiant',compact('liste'));
     }
 }
